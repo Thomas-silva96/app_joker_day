@@ -1,4 +1,4 @@
-package co.tiagoaguiar.tutorial.jokerappdev
+package co.tsdroiddeveloper.jokerappdev
 
 import android.os.Bundle
 import android.view.LayoutInflater

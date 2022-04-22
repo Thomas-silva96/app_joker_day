@@ -1,4 +1,4 @@
-package co.tiagoaguiar.tutorial.jokerappdev
+package co.tsdroiddeveloper.jokerappdev
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

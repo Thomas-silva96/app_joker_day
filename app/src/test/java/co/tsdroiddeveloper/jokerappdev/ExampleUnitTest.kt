@@ -1,4 +1,4 @@
-package co.tiagoaguiar.tutorial.jokerappdev
+package co.tsdroiddeveloper.jokerappdev
 
 import org.junit.Test
 
