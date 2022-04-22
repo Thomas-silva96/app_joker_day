@@ -8,29 +8,23 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import co.tsdroiddeveloper.jokerappdev.R
 import co.tsdroiddeveloper.jokerappdev.model.Joke
-import co.tsdroiddeveloper.jokerappdev.presentation.JokePresenter
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import co.tsdroiddeveloper.jokerappdev.presentation.JokeDayPresenter
 import com.squareup.picasso.Picasso
 
-class JokeFragment : Fragment() {
-
-    companion object {
-        const val CATEGORY_KEY = "category"
-    }
+class JokeDayFragment : Fragment() {
 
     private lateinit var progressBar: ProgressBar
     private lateinit var textView: TextView
     private lateinit var imageView: ImageView
 
-    private lateinit var presenter: JokePresenter
+    private lateinit var presenter: JokeDayPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        presenter = JokePresenter(this)
+        presenter = JokeDayPresenter(this)
     }
 
     override fun onCreateView(
@@ -38,26 +32,20 @@ class JokeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_joke, container, false)
+        return inflater.inflate(R.layout.fragment_joke_day, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val categoryName = arguments?.getString(CATEGORY_KEY)!!
 
-        activity?.findViewById<Toolbar>(R.id.toolbar)?.title = categoryName
         progressBar = view.findViewById(R.id.progress_bar)
         textView = view.findViewById(R.id.txt_joke)
         imageView = view.findViewById(R.id.img_joke)
 
-        view.findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
-            presenter.findBy(categoryName)
-        }
-
-        presenter.findBy(categoryName)
+        presenter.findRandom()
     }
 
-    fun showJoke(joke: Joke) {
+    fun showJokeDay(joke: Joke) {
         textView.text = joke.text
         Picasso.get().load(joke.iconUrl).into(imageView)
     }
@@ -73,5 +61,4 @@ class JokeFragment : Fragment() {
     fun hideProgress() {
         progressBar.visibility = View.GONE
     }
-
 }
